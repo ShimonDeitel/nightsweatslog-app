@@ -1,0 +1,75 @@
+name: Night Sweats Log
+options:
+  bundleIdPrefix: com.shimondeitel.nightsweatslog
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: "W7Q885Q59C"
+    CODE_SIGN_STYLE: Automatic
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: "YES"
+targets:
+  Night Sweats Log:
+    type: application
+    platform: iOS
+    sources:
+      - path: Night Sweats Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.nightsweatslog
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_FILE: Night Sweats Log/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: "YES"
+        GENERATE_INFOPLIST_FILE: "NO"
+  Night Sweats LogTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Night Sweats LogTests
+      - path: Night Sweats Log.storekit
+    dependencies:
+      - target: Night Sweats Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.nightsweatslog.tests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TARGETED_DEVICE_FAMILY: "1"
+  Night Sweats LogUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: Night Sweats LogUITests
+    dependencies:
+      - target: Night Sweats Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.nightsweatslog.uitests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TARGETED_DEVICE_FAMILY: "1"
+schemes:
+  Night Sweats Log:
+    build:
+      targets:
+        Night Sweats Log: all
+        Night Sweats LogTests: [test]
+        Night Sweats LogUITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: Night Sweats Log.storekit
+    test:
+      config: Debug
+      storeKitConfiguration: Night Sweats Log.storekit
+      targets:
+        - Night Sweats LogTests
+        - Night Sweats LogUITests
+    archive:
+      config: Release
